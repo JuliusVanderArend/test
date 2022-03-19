@@ -1,6 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "Object.h"
 #include "Player.h"
+#include "Renderer.h"
+#include "Sprite.h"
+#include "Renderer.h"
 
 int main()
 {
@@ -15,10 +18,17 @@ int main()
     sf::Shader testShader;
     testShader.loadFromFile("testFragment.frag", sf::Shader::Fragment);//testShader.loadFromFile("testVertex.vert", "testFragment.frag");
 
+    sf::Texture texture;
+    texture.loadFromFile("letter.png");
 
-    sf::CircleShape shape(100.f);
-    sf::RectangleShape rect(sf::Vector2f(30,30));
-    rect.setPosition(30, 30);
+    //sf::Sprite sprite;
+    //sprite.setTexture(texture);
+    Renderer renderer(&window);
+
+    Material testMaterial(&testShader);
+
+    Sprite testSprite(texture,texture,testMaterial);
+
 
     while (window.isOpen())
     {
@@ -29,10 +39,9 @@ int main()
                 window.close();
         }
         window.clear();
+        /*window.draw(sprite, &testShader);*/
+        renderer.draw(testSprite);
 
-        for()
-        window.draw(shape, &testShader);
-        window.draw(rect);
         window.display();
     }
     return 0;
