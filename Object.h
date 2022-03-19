@@ -19,7 +19,10 @@ public:
 	virtual void start() {
 
 	}
-	virtual void update() {//scenestate afsjkskjfskjkskjsf
+	virtual void update() {
+
+	}
+	virtual void draw() {
 
 	}
 };
