@@ -16,19 +16,32 @@ int main()
     objects[1] = player;
 
     sf::Shader testShader;
-    testShader.loadFromFile("testFragment.frag", sf::Shader::Fragment);//testShader.loadFromFile("testVertex.vert", "testFragment.frag");
+    testShader.loadFromFile("testFragment.frag", sf::Shader::Fragment);
+    sf::Shader testShader2;
+    testShader2.loadFromFile("testFragment.frag", sf::Shader::Fragment);
 
     sf::Texture texture;
     texture.loadFromFile("letter.png");
+    sf::Texture texture2;
+    texture2.loadFromFile("table.png");
+
+    sf::Texture testNormal;
+    testNormal.loadFromFile("red_bricks_04_nor_gl_1k.jpg");
+
+    sf::Texture testNormal2;
+    testNormal2.loadFromFile("rust_coarse_01_nor_gl_1k.jpg");
 
     //sf::Sprite sprite;
     //sprite.setTexture(texture);
     Renderer renderer(&window);
 
     Material testMaterial(&testShader);
+    Material testMaterial2(&testShader2);
 
-    Sprite testSprite(texture,texture,testMaterial);
+    Sprite testSprite(texture,testNormal, testMaterial);
+    Sprite testSprite2(texture2, testNormal, testMaterial);
 
+    testSprite2.sprite.setPosition(50, 50);
 
     while (window.isOpen())
     {
@@ -39,9 +52,8 @@ int main()
                 window.close();
         }
         window.clear();
-        /*window.draw(sprite, &testShader);*/
         renderer.draw(testSprite);
-
+        renderer.draw(testSprite2);
         window.display();
     }
     return 0;
