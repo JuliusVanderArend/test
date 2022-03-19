@@ -16,7 +16,8 @@ void main(){
 	vec4 lighting = vec4(0.05,0.05,0.1,1.0);
 	for(int i=0;i<128;i++){
 		vec2 diff = lightPos[i]-pos;
-		lighting+=(vec4(lightCol[i].r,lightCol[i].g,lightCol[i].b,0.0)*lightI[i])/(diff.x*diff.x+diff.y*diff.y);
+		vec2 l = normalize(diff);
+		lighting += (vec4(lightCol[i].r,lightCol[i].g,lightCol[i].b,0.0)*lightI[i] * (dot(l,pixelNormal.xy)+2.0)) / (diff.x*diff.x+diff.y*diff.y);
 	}
 	gl_FragColor = pixel*lighting;
 }

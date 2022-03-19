@@ -1,11 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "SceneState.h"
+#include <string>
+
 class Object
 {
 public:
 	sf::Vector2f position;
+	std::string tag = "default";
 	Object() {
 		start();
 	}
