@@ -1,7 +1,8 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 #include <SFML/Graphics.hpp>
-
+#include "Object.h"
+#include "Renderer.h"
 class Light {
 public:
 	sf::Vector2f position;
@@ -19,5 +20,6 @@ public:
 		intensity = intensity_in;
 	}
 };
+
 
 #endif
